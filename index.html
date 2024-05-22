@@ -25,7 +25,7 @@
         display: block;
         margin-bottom: 5px;
     }
-    .form-group input {
+    .form-group input, .form-group select {
         width: 100%;
         padding: 8px;
         box-sizing: border-box;
@@ -123,6 +123,18 @@
         margin-left: 90px;
         margin-top: 40px;
     }
+    .layout3-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .layout3 .info {
+        margin-left: 0;
+    }
+    .layout3 .certificates-container {
+        justify-content: center;
+    }
 </style>
 </head>
 <body>
@@ -130,32 +142,41 @@
     <h1>Gerador de Assinatura de Email</h1>
     <form id="signatureForm">
         <div class="form-group">
+            <label for="layout">Selecione o Layout</label>
+            <select id="layout" onchange="generateSignature()">
+                <option value="layout1">Layout 1</option>
+                <option value="layout2">Layout 2</option>
+                <option value="layout3">Layout 3</option>
+                <!-- Adicione mais opções de layout aqui -->
+            </select>
+        </div>
+        <div class="form-group">
             <label for="profilePicture">Foto de Perfil</label>
-            <input type="file" id="profilePicture" accept="image/*">
+            <input type="file" id="profilePicture" accept="image/*" onchange="generateSignature()">
         </div>
         <div class="form-group">
             <label for="logo">Logo</label>
-            <input type="file" id="logo" accept="image/*">
+            <input type="file" id="logo" accept="image/*" onchange="generateSignature()">
         </div>
         <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" id="name">
+            <input type="text" id="name" oninput="generateSignature()">
         </div>
         <div class="form-group">
             <label for="title">Cargo</label>
-            <input type="text" id="title">
+            <input type="text" id="title" oninput="generateSignature()">
         </div>
         <div class="form-group">
             <label for="phone">Telefone</label>
-            <input type="text" id="phone">
+            <input type="text" id="phone" oninput="generateSignature()">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email">
+            <input type="email" id="email" oninput="generateSignature()">
         </div>
         <div class="form-group">
             <label for="website">Website</label>
-            <input type="text" id="website">
+            <input type="text" id="website" oninput="generateSignature()">
         </div>
         <div class="form-group">
             <button type="button" onclick="generateSignature()">Gerar Assinatura</button>
@@ -175,7 +196,17 @@
         "https://api.zyph.io/uploads/images_234bf4658d.png"
     ];
 
-    function generateSignature() {
+    function readFileAsDataURL(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function generateSignature() {
+        const layout = document.getElementById('layout').value;
         const profilePicture = document.getElementById('profilePicture').files[0];
         const logo = document.getElementById('logo').files[0];
         const name = document.getElementById('name').value;
@@ -184,49 +215,92 @@
         const email = document.getElementById('email').value;
         const website = document.getElementById('website').value;
 
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const profilePictureUrl = e.target.result;
+        let profilePictureUrl = '';
+        let logoUrl = '';
 
-            const logoReader = new FileReader();
-            logoReader.onload = function (e) {
-                const logoUrl = e.target.result;
+        if (profilePicture) {
+            profilePictureUrl = await readFileAsDataURL(profilePicture);
+        }
 
-                let certificatesHtml = '';
-                for (let i = 0; i < fixedCertificates.length; i++) {
-                    certificatesHtml += `<img src="${fixedCertificates[i]}" alt="Certificado ${i + 1}" class="certificates">`;
-                }
+        if (logo) {
+            logoUrl = await readFileAsDataURL(logo);
+        }
 
-                const signatureHtml = `
-                    <div class="perfil-container">
-                        <div class="perfil-info-container">
-                            <div>
-                                <img class="perfil" src="${profilePictureUrl}" alt="Perfil">
-                                <div class="logo-container">
-                                    <img src="${logoUrl}" alt="Logo Empresa">
-                                </div>
-                            </div>
-                            <div class="info">
-                                <strong>${name}</strong><br>
-                                ${title}<br>
-                                <div class="contact-info">
-                                    <a href="tel:+${phone}">${phone}</a><br>
-                                    <a href="mailto:${email}">${email}</a><br>
-                                    <a href="${website}" style="color: green;">${website}</a><br>
-                                </div>
+        let certificatesHtml = '';
+        for (let i = 0; i < fixedCertificates.length; i++) {
+            certificatesHtml += `<img src="${fixedCertificates[i]}" alt="Certificado ${i + 1}" class="certificates">`;
+        }
+
+        let signatureHtml;
+        if (layout === 'layout1') {
+            signatureHtml = `
+                <div class="perfil-container">
+                    <div class="perfil-info-container">
+                        <div>
+                            ${profilePictureUrl ? `<img class="perfil" src="${profilePictureUrl}" alt="Perfil">` : ''}
+                            ${logoUrl ? `<div class="logo-container"><img src="${logoUrl}" alt="Logo Empresa"></div>` : ''}
+                        </div>
+                        <div class="info">
+                            <strong>${name}</strong><br>
+                            ${title}<br>
+                            <div class="contact-info">
+                                ${phone ? `<a href="tel:+${phone}">${phone}</a><br>` : ''}
+                                ${email ? `<a href="mailto:${email}">${email}</a><br>` : ''}
+                                ${website ? `<a href="${website}" style="color: green;">${website}</a><br>` : ''}
                             </div>
                         </div>
                     </div>
-                    <div class="certificates-container">
-                        ${certificatesHtml}
+                </div>
+                <div class="certificates-container">
+                    ${certificatesHtml}
+                </div>
+            `;
+        } else if (layout === 'layout2') {
+            signatureHtml = `
+                <div class="perfil-container">
+                    <div class="perfil-info-container">
+                        <div>
+                            ${profilePictureUrl ? `<img class="perfil" src="${profilePictureUrl}" alt="Perfil">` : ''}
+                        </div>
+                        <div class="info" style="margin-left: 20px;">
+                            <strong>${name}</strong><br>
+                            ${title}<br>
+                            <div class="contact-info">
+                                ${phone ? `<a href="tel:+${phone}">${phone}</a><br>` : ''}
+                                ${email ? `<a href="mailto:${email}">${email}</a><br>` : ''}
+                                ${website ? `<a href="${website}" style="color: green;">${website}</a><br>` : ''}
+                            </div>
+                        </div>
                     </div>
-                `;
-                document.getElementById('signaturePreview').innerHTML = signatureHtml;
-                document.getElementById('generatedCode').value = signatureHtml;
-            };
-            logoReader.readAsDataURL(logo);
-        };
-        reader.readAsDataURL(profilePicture);
+                    ${logoUrl ? `<div class="logo-container" style="margin-left: auto; margin-top: 0;"><img src="${logoUrl}" alt="Logo Empresa"></div>` : ''}
+                </div>
+                <div class="certificates-container" style="margin-top: 20px;">
+                    ${certificatesHtml}
+                </div>
+            `;
+        } else if (layout === 'layout3') {
+            signatureHtml = `
+                <div class="layout3-container">
+                    ${profilePictureUrl ? `<img class="perfil" src="${profilePictureUrl}" alt="Perfil">` : ''}
+                    <div class="info">
+                        <strong>${name}</strong><br>
+                        ${title}<br>
+                        <div class="contact-info">
+                            ${phone ? `<a href="tel:+${phone}">${phone}</a><br>` : ''}
+                            ${email ? `<a href="mailto:${email}">${email}</a><br>` : ''}
+                            ${website ? `<a href="${website}" style="color: green;">${website}</a><br>` : ''}
+                        </div>
+                    </div>
+                    ${logoUrl ? `<div class="logo-container"><img src="${logoUrl}" alt="Logo Empresa"></div>` : ''}
+                </div>
+                <div class="certificates-container layout3">
+                    ${certificatesHtml}
+                </div>
+            `;
+        }
+
+        document.getElementById('signaturePreview').innerHTML = signatureHtml;
+        document.getElementById('generatedCode').value = signatureHtml;
     }
 </script>
 </body>
