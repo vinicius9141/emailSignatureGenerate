@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gerador de Assinatura de Email</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    .form-group input[type="file"] {
+        padding: 3px;
+    }
+    .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        height: 200px;
+    }
+    .form-group button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .form-group button:hover {
+        background-color: #218838;
+    }
+    .email-signature {
+        font-family: Arial, sans-serif;
+        line-height: normal;
+        font-size: 12px;
+        color: #333;
+        width: 800px;
+        padding: 8px 16px 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: white;
+        margin-top: 20px;
+    }
+    .email-signature img {
+        vertical-align: middle;
+        border: none;
+    }
+    .perfil-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0px;
+        position: relative;
+        color: #000;
+    }
+    .perfil {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+        position: relative;
+        z-index: 1;
+    }
+    .info {
+        font-size: 17px;
+        z-index: 1;
+        position: relative;
+        margin-left: 20px;
+    }
+    .certificates-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 35px;
+        margin-left: 84px;
+        gap: 15px;
+    }
+    .certificates {
+        width: 70px;
+        object-fit: fill;
+        height: auto;
+        margin-right: 10px;
+    }
+    .logo-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 17px;
+    }
+    .logo-container img {
+        width: 100px;
+        height: auto;
+        object-fit: contain;
+    }
+    .contact-info {
+        margin-top: 18px;
+        line-height: 1.6;
+    }
+    .perfil-info-container {
+        width: 100%;
+        display: flex;
+        margin-left: 90px;
+        margin-top: 40px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Gerador de Assinatura de Email</h1>
+    <form id="signatureForm">
+        <div class="form-group">
+            <label for="profilePicture">Foto de Perfil</label>
+            <input type="file" id="profilePicture" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="logo">Logo</label>
+            <input type="file" id="logo" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name">
+        </div>
+        <div class="form-group">
+            <label for="title">Cargo</label>
+            <input type="text" id="title">
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="text" id="phone">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+        </div>
+        <div class="form-group">
+            <label for="website">Website</label>
+            <input type="text" id="website">
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="generateSignature()">Gerar Assinatura</button>
+        </div>
+        <div class="form-group">
+            <label for="generatedCode">Código Gerado</label>
+            <textarea id="generatedCode" readonly></textarea>
+        </div>
+    </form>
+    <div id="signaturePreview" class="email-signature"></div>
+</div>
+<script>
+    const fixedCertificates = [
+        "https://api.zyph.io/uploads/Selo_v2_1_1_e4d70d2f47.png",
+        "https://api.zyph.io/uploads/4_d6a79512aa.png",
+        "https://api.zyph.io/uploads/Google_Partner_Premier_2024_png_1_2900838509.svg",
+        "https://api.zyph.io/uploads/images_234bf4658d.png"
+    ];
+
+    function generateSignature() {
+        const profilePicture = document.getElementById('profilePicture').files[0];
+        const logo = document.getElementById('logo').files[0];
+        const name = document.getElementById('name').value;
+        const title = document.getElementById('title').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const website = document.getElementById('website').value;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const profilePictureUrl = e.target.result;
+
+            const logoReader = new FileReader();
+            logoReader.onload = function (e) {
+                const logoUrl = e.target.result;
+
+                let certificatesHtml = '';
+                for (let i = 0; i < fixedCertificates.length; i++) {
+                    certificatesHtml += `<img src="${fixedCertificates[i]}" alt="Certificado ${i + 1}" class="certificates">`;
+                }
+
+                const signatureHtml = `
+                    <div class="perfil-container">
+                        <div class="perfil-info-container">
+                            <div>
+                                <img class="perfil" src="${profilePictureUrl}" alt="Perfil">
+                                <div class="logo-container">
+                                    <img src="${logoUrl}" alt="Logo Empresa">
+                                </div>
+                            </div>
+                            <div class="info">
+                                <strong>${name}</strong><br>
+                                ${title}<br>
+                                <div class="contact-info">
+                                    <a href="tel:+${phone}">${phone}</a><br>
+                                    <a href="mailto:${email}">${email}</a><br>
+                                    <a href="${website}" style="color: green;">${website}</a><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certificates-container">
+                        ${certificatesHtml}
+                    </div>
+                `;
+                document.getElementById('signaturePreview').innerHTML = signatureHtml;
+                document.getElementById('generatedCode').value = signatureHtml;
+            };
+            logoReader.readAsDataURL(logo);
+        };
+        reader.readAsDataURL(profilePicture);
+    }
+</script>
+</body>
+</html>
