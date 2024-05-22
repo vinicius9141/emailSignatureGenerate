@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assinatura de Email</title>
+<style>
+    .email-signature {
+        font-family: Arial, sans-serif;
+        line-height: normal;
+        font-size: 12px;
+        color: #333;
+        width: 800px;
+        padding: 8px 16px 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: white;
+    }
+    .email-signature img {
+        vertical-align: middle;
+        border: none;
+    }
+    .perfil-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0px;
+        position: relative;
+        color: #000;
+    }
+    .perfil {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+        position: relative;
+        z-index: 1;
+    }
+    .info {
+        font-size: 17px;
+        z-index: 1;
+        position: relative;
+        margin-left: 20px;
+    }
+    .certificates-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 35px;
+        margin-left: 84px;
+        gap: 15px;
+        }
+    .certificates {
+        width: 70px;
+        object-fit: fill;
+        height: auto;
+        margin-right: 10px;
+    }
+    .logo-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 17px;
+    }
+    .logo-container img {
+        width: 100px;
+        height: auto;
+        object-fit: contain;
+    }
+    .contact-info {
+        margin-top: 18px;
+        line-height: 1.6;
+    }
+    .perfil-info-container {
+        width: 100%;
+        display: flex;
+        margin-left: 90px;
+        margin-top: 40px;
+    }
+    .circle-bg {
+        position: absolute;
+        width: 175px;
+        height: 170px;
+        background: blue;
+        background-size: contain;
+        z-index: 0;
+        border-radius: 0 50% 50% 0;
+        left: 30px;
+    }
+    .circle-bg-green {
+        position: absolute;
+        width: 185px;
+        height: 170px;
+        background: #0ea300;
+        background-size: contain;
+        z-index: 0;
+        border-radius: 0 50% 50% 0;
+        left: 30px;
+    }
+</style>
+</head>
+<body>
+<div class="email-signature">
+    <div class="perfil-container">
+        <!-- <div class="circle-bg-green"></div>
+        <div class="circle-bg"></div> -->
+        <div class="perfil-info-container">
+            <div>
+                <img class="perfil" src="https://api.zyph.io/uploads/Foto_Perfil_Renzo_39b000036c.jpeg" alt="Perfil">
+                <div class="logo-container">
+                    <img src="https://api.zyph.io/uploads/Design_sem_nome_5_045cff5984.png" alt="Logo Empresa">
+                </div>
+            </div>
+            <div class="info">
+                <strong>Renzo Pagio</strong><br>
+                Consultor de Vendas<br>
+                <div class="contact-info">
+                    <a href="tel:+4747657746">(47) 99653-7746</a><br>
+                    <a href="mailto:renzo@growthhackgroup.com">renzo@growthhackgroup.com</a><br>
+                    <a href="http://growthhackgroup.com" style="color: green;">growthhackgroup.com</a><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="certificates-container">
+        <img src="https://api.zyph.io/uploads/Selo_v2_1_1_e4d70d2f47.png" alt="Certificado 1" class="certificates">
+        <img src="https://api.zyph.io/uploads/4_d6a79512aa.png" alt="Certificado 2" class="certificates">
+        <img src="https://api.zyph.io/uploads/Google_Partner_Premier_2024_png_1_2900838509.svg" alt="Certificado 3" class="certificates">
+        <img src="https://api.zyph.io/uploads/images_234bf4658d.png" alt="Certificado 4" class="certificates">
+    </div>
+</div>
+</body>
+</html>
