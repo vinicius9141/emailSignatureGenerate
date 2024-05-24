@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: #f4f4f4;
   color: #333;
+  margin-top: 15rem;
 }
 
 .header {
@@ -56,7 +57,7 @@ body {
 .container {
   max-width: 800px;
   width: 100%;
-  padding: 100px 20px 0; /* Ajuste para dar espaço para o header fixo */
+  padding: 0 20px 0; /* Ajuste para dar espaço para o header fixo */
   margin: 0 auto;
   box-sizing: border-box;
   text-align: center;
