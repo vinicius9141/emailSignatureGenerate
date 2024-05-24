@@ -2,306 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gerador de Assinatura de Email</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
-    }
-    .container {
-        max-width: 800px;
-        margin: auto;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .form-group {
-        margin-bottom: 15px;
-    }
-    .form-group label {
-        display: block;
-        margin-bottom: 5px;
-    }
-    .form-group input, .form-group select {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-    }
-    .form-group input[type="file"] {
-        padding: 3px;
-    }
-    .form-group textarea {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-        height: 200px;
-    }
-    .form-group button {
-        padding: 10px 20px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .form-group button:hover {
-        background-color: #218838;
-    }
-    .email-signature {
-        font-family: Arial, sans-serif;
-        line-height: normal;
-        font-size: 12px;
-        color: #333;
-        width: 800px;
-        padding: 8px 16px 8px 0;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background: white;
-        margin-top: 20px;
-    }
-    .email-signature img {
-        vertical-align: middle;
-        border: none;
-    }
-    .perfil-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0px;
-        position: relative;
-        color: #000;
-    }
-    .perfil {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 10px;
-        position: relative;
-        z-index: 1;
-    }
-    .info {
-        font-size: 17px;
-        z-index: 1;
-        position: relative;
-        margin-left: 20px;
-    }
-    .certificates-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: 35px;
-        margin-left: 84px;
-        gap: 15px;
-    }
-    .certificates {
-        width: 70px;
-        object-fit: fill;
-        height: auto;
-        margin-right: 10px;
-    }
-    .logo-container {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-top: 17px;
-    }
-    .logo-container img {
-        width: 100px;
-        height: auto;
-        object-fit: contain;
-    }
-    .contact-info {
-        margin-top: 18px;
-        line-height: 1.6;
-    }
-    .perfil-info-container {
-        width: 100%;
-        display: flex;
-        margin-left: 90px;
-        margin-top: 40px;
-    }
-    .layout3-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .layout3 .info {
-        margin-left: 0;
-    }
-    .layout3 .certificates-container {
-        justify-content: center;
-    }
-</style>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="index-styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-<div class="container">
-    <h1>Gerador de Assinatura de Email</h1>
-    <form id="signatureForm">
-        <div class="form-group">
-            <label for="layout">Selecione o Layout</label>
-            <select id="layout" onchange="generateSignature()">
-                <option value="layout1">Layout 1</option>
-                <option value="layout2">Layout 2</option>
-                <option value="layout3">Layout 3</option>
-                <!-- Adicione mais opções de layout aqui -->
-            </select>
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/150x50.png?text=Logo" alt="Logo">
         </div>
-        <div class="form-group">
-            <label for="profilePicture">Foto de Perfil</label>
-            <input type="file" id="profilePicture" accept="image/*" onchange="generateSignature()">
+        <nav class="nav">
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#features">Benefícios</a></li>
+                <li><a href="#testimonial">Testemunho</a></li>
+                <li><a href="#cta">Cadastro/Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<section id="home" class="home-section">
+    <div class="container">
+        <div class="home-content">
+            <h1>Gerador de Assinatura de Email</h1>
+            <p>Crie assinaturas de email profissionais de forma fácil e rápida.</p>
+            <a href="#cta" class="btn-primary">Comece Agora</a>
         </div>
-        <div class="form-group">
-            <label for="logo">Logo</label>
-            <input type="file" id="logo" accept="image/*" onchange="generateSignature()">
+        <div class="home-image">
+            <img src="https://i.postimg.cc/MK0wjfVd/imagem-2024-05-23-125319955.png" alt="Assinatura de Email">
         </div>
-        <div class="form-group">
-            <label for="name">Nome</label>
-            <input type="text" id="name" oninput="generateSignature()">
+    </div>
+</section>
+<section id="features" class="features-section">
+    <div class="container">
+        <h2>Benefícios</h2>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <h3>Fácil de Usar</h3>
+                <p>Interface intuitiva que permite criar assinaturas de email rapidamente.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-cogs"></i>
+                <h3>Personalizável</h3>
+                <p>Vários layouts e opções de personalização para atender suas necessidades.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsivo</h3>
+                <p>Assinaturas otimizadas para dispositivos móveis e desktop.</p>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="title">Cargo</label>
-            <input type="text" id="title" oninput="generateSignature()">
+    </div>
+</section>
+<section id="testimonial" class="testimonial-section">
+    <div class="container">
+        <h2>O que nossos usuários dizem</h2>
+        <div class="testimonial">
+            <img src="https://api.zyph.io/uploads/Foto_Perfil_Renzo_39b000036c.jpeg" alt="Usuário">
+            <p>"Este gerador de assinaturas de email é fantástico! Fácil de usar e com resultados profissionais."</p>
+            <span>- Renzo Pagio</span>
         </div>
-        <div class="form-group">
-            <label for="phone">Telefone</label>
-            <input type="text" id="phone" oninput="generateSignature()">
+    </div>
+</section>
+<section id="cta" class="cta-section">
+    <div class="container">
+        <h2>Crie sua Assinatura Agora</h2>
+        <p>Cadastre-se ou faça login para começar a criar suas assinaturas de email personalizadas.</p>
+        <div class="cta-buttons">
+            <a href="register.html" class="btn-primary">Cadastrar</a>
+            <a href="login.html" class="btn-secondary">Login</a>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" oninput="generateSignature()">
-        </div>
-        <div class="form-group">
-            <label for="website">Website</label>
-            <input type="text" id="website" oninput="generateSignature()">
-        </div>
-        <div class="form-group">
-            <button type="button" onclick="generateSignature()">Gerar Assinatura</button>
-        </div>
-        <div class="form-group">
-            <label for="generatedCode">Código Gerado</label>
-            <textarea id="generatedCode" readonly></textarea>
-        </div>
-    </form>
-    <div id="signaturePreview" class="email-signature"></div>
-</div>
-<script>
-    const fixedCertificates = [
-        "https://api.zyph.io/uploads/Selo_v2_1_1_e4d70d2f47.png",
-        "https://api.zyph.io/uploads/4_d6a79512aa.png",
-        "https://api.zyph.io/uploads/Google_Partner_Premier_2024_png_1_2900838509.svg",
-        "https://api.zyph.io/uploads/images_234bf4658d.png"
-    ];
-
-    function readFileAsDataURL(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-        });
-    }
-
-    async function generateSignature() {
-        const layout = document.getElementById('layout').value;
-        const profilePicture = document.getElementById('profilePicture').files[0];
-        const logo = document.getElementById('logo').files[0];
-        const name = document.getElementById('name').value;
-        const title = document.getElementById('title').value;
-        const phone = document.getElementById('phone').value;
-        const email = document.getElementById('email').value;
-        const website = document.getElementById('website').value;
-
-        let profilePictureUrl = '';
-        let logoUrl = '';
-
-        if (profilePicture) {
-            profilePictureUrl = await readFileAsDataURL(profilePicture);
-        }
-
-        if (logo) {
-            logoUrl = await readFileAsDataURL(logo);
-        }
-
-        let certificatesHtml = '';
-        for (let i = 0; i < fixedCertificates.length; i++) {
-            certificatesHtml += `<img src="${fixedCertificates[i]}" alt="Certificado ${i + 1}" class="certificates">`;
-        }
-
-        let signatureHtml;
-        if (layout === 'layout1') {
-            signatureHtml = `
-                <div class="perfil-container">
-                    <div class="perfil-info-container">
-                        <div>
-                            ${profilePictureUrl ? `<img class="perfil" src="${profilePictureUrl}" alt="Perfil">` : ''}
-                            ${logoUrl ? `<div class="logo-container"><img src="${logoUrl}" alt="Logo Empresa"></div>` : ''}
-                        </div>
-                        <div class="info">
-                            <strong>${name}</strong><br>
-                            ${title}<br>
-                            <div class="contact-info">
-                                ${phone ? `<a href="tel:+${phone}">${phone}</a><br>` : ''}
-                                ${email ? `<a href="mailto:${email}">${email}</a><br>` : ''}
-                                ${website ? `<a href="${website}" style="color: green;">${website}</a><br>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="certificates-container">
-                    ${certificatesHtml}
-                </div>
-            `;
-        } else if (layout === 'layout2') {
-            signatureHtml = `
-                <div class="perfil-container">
-                    <div class="perfil-info-container">
-                        <div>
-                            ${profilePictureUrl ? `<img class="perfil" src="${profilePictureUrl}" alt="Perfil">` : ''}
-                        </div>
-                        <div class="info" style="margin-left: 20px;">
-                            <strong>${name}</strong><br>
-                            ${title}<br>
-                            <div class="contact-info">
-                                ${phone ? `<a href="tel:+${phone}">${phone}</a><br>` : ''}
-                                ${email ? `<a href="mailto:${email}">${email}</a><br>` : ''}
-                                ${website ? `<a href="${website}" style="color: green;">${website}</a><br>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                    ${logoUrl ? `<div class="logo-container" style="margin-left: auto; margin-top: 0;"><img src="${logoUrl}" alt="Logo Empresa"></div>` : ''}
-                </div>
-                <div class="certificates-container" style="margin-top: 20px;">
-                    ${certificatesHtml}
-                </div>
-            `;
-        } else if (layout === 'layout3') {
-            signatureHtml = `
-                <div class="layout3-container">
-                    ${profilePictureUrl ? `<img class="perfil" src="${profilePictureUrl}" alt="Perfil">` : ''}
-                    <div class="info">
-                        <strong>${name}</strong><br>
-                        ${title}<br>
-                        <div class="contact-info">
-                            ${phone ? `<a href="tel:+${phone}">${phone}</a><br>` : ''}
-                            ${email ? `<a href="mailto:${email}">${email}</a><br>` : ''}
-                            ${website ? `<a href="${website}" style="color: green;">${website}</a><br>` : ''}
-                        </div>
-                    </div>
-                    ${logoUrl ? `<div class="logo-container"><img src="${logoUrl}" alt="Logo Empresa"></div>` : ''}
-                </div>
-                <div class="certificates-container layout3">
-                    ${certificatesHtml}
-                </div>
-            `;
-        }
-
-        document.getElementById('signaturePreview').innerHTML = signatureHtml;
-        document.getElementById('generatedCode').value = signatureHtml;
-    }
-</script>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Gerador de Assinatura de Email. Todos os direitos reservados.</p>
+    </div>
+</footer>
 </body>
 </html>

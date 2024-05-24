@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gerador de Assinatura de Email</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="signature-styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Gerador de Assinatura de Email</h1>
+    <form id="signatureForm">
+        <div class="form-group">
+            <label for="layout">Selecione o Layout</label>
+            <select id="layout" onchange="generateSignature()">
+                <option value="layout1">Layout 1</option>
+                <option value="layout2">Layout 2</option>
+                <option value="layout3">Layout 3</option>
+            </select>
+        </div>
+        <div class="upload-group">
+            <div class="form-group">
+                <label for="profilePicture">Foto de Perfil</label>
+                <input type="file" id="profilePicture" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
+                <label for="profilePicture" class="upload-button">Upload Foto de Perfil</label>
+            </div>
+            <div class="form-group">
+                <label for="logo">Logo</label>
+                <input type="file" id="logo" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
+                <label for="logo" class="upload-button">Upload Logo</label>
+            </div>
+            <div class="form-group">
+                <label for="certificate1">Selo 1</label>
+                <input type="file" id="certificate1" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
+                <label for="certificate1" class="upload-button">Upload Selo 1</label>
+            </div>
+            <div class="form-group">
+                <label for="certificate2">Selo 2</label>
+                <input type="file" id="certificate2" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
+                <label for="certificate2" class="upload-button">Upload Selo 2</label>
+            </div>
+            <div class="form-group">
+                <label for="certificate3">Selo 3</label>
+                <input type="file" id="certificate3" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
+                <label for="certificate3" class="upload-button">Upload Selo 3</label>
+            </div>
+            <div class="form-group">
+                <label for="certificate4">Selo 4</label>
+                <input type="file" id="certificate4" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
+                <label for="certificate4" class="upload-button">Upload Selo 4</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" oninput="generateSignature()">
+        </div>
+        <div class="form-group">
+            <label for="title">Cargo</label>
+            <input type="text" id="title" oninput="generateSignature()">
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="text" id="phone" oninput="generateSignature()">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" oninput="generateSignature()">
+        </div>
+        <div class="form-group">
+            <label for="website">Website</label>
+            <input type="text" id="website" oninput="generateSignature()">
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn-primary" onclick="checkPaymentStatusAndGenerateSignature()">Gerar Assinatura</button>
+        </div>
+        <div class="form-group" id="codeContainer" style="display:none;">
+            <label for="generatedCode" id="generatedCodeLabel">Código Gerado</label>
+            <textarea id="generatedCode" readonly></textarea>
+            <button type="button" class="copy-btn" onclick="copyToClipboard()">Copiar para a área de transferência</button>
+        </div>
+    </form>
+    <div id="signaturePreview" class="email-signature"></div>
+</div>
+
+<!-- Modal -->
+<div id="paymentModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Você precisa pagar para acessar esta funcionalidade.</p>
+    <p>Entre em contato:</p>
+    <a href="https://api.whatsapp.com/send?phone=55129921003377&text=Olá!%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-button">Fale conosco no WhatsApp</a>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

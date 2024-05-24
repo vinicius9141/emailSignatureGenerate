@@ -1,0 +1,279 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Header Styles */
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo img {
+  height: 50px;
+}
+
+.header .nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  color: #3333;
+}
+
+nav.nav a{
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600;
+}
+.header .container  {
+  background-color: #007bff !important;
+  box-shadow:none !important;
+}
+
+.cta-section .container {
+  background-color: #007bff !important;
+  box-shadow:none !important;
+}
+
+.footer .container {
+  background-color: #333 !important;
+  box-shadow:none !important;
+}
+
+.header .nav ul li {
+  margin: 0 15px;
+}
+
+.header .nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.header .nav ul li a:hover {
+  color: #ffdd57;
+}
+
+/* Home Section Styles */
+.home-section {
+  background: linear-gradient(135deg, #e1ecf7, #f8fdff);
+  color: white;
+  padding: 60px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.home-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.home-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.home-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.home-content .btn-primary {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #ffdd57;
+  color: #333;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.home-content .btn-primary:hover {
+  background-color: #ffc107;
+}
+
+.home-image {
+  flex: 1;
+  text-align: right;
+}
+
+.home-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section Styles */
+.features-section {
+  background-color: #f4f4f4;
+  padding: 60px 0;
+}
+
+.features-section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #007bff;
+}
+
+.features {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.feature {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.feature i {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.feature h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 16px;
+}
+
+/* Testimonial Section Styles */
+.testimonial-section {
+  background-color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.testimonial-section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #007bff;
+}
+
+.testimonial {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.testimonial p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.testimonial span {
+  font-size: 16px;
+  color: #777;
+}
+
+/* CTA Section Styles */
+.cta-section {
+  background-color: #007bff;
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cta-buttons .btn-primary, .cta-buttons .btn-secondary {
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-buttons .btn-primary {
+  background-color: #ffdd57;
+  color: #333;
+}
+
+.cta-buttons .btn-primary:hover {
+  background-color: #ffc107;
+}
+
+.cta-buttons .btn-secondary {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.cta-buttons .btn-secondary:hover {
+  background-color: #e0a800;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer p {
+  margin: 0;
+}

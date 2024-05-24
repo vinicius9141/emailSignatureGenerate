@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro</h1>
+    <div id="registerContainer">
+        <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail">
+        </div>
+        <div class="form-group">
+            <label for="registerPassword">Senha</label>
+            <input type="password" id="registerPassword">
+        </div>
+        <div class="form-group">
+            <button onclick="register()">Cadastrar</button>
+        </div>
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

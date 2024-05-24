@@ -1,0 +1,194 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.form-group input[type="file"] {
+  display: none;
+}
+
+.upload-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.upload-group .form-group {
+  flex: 1 1 calc(33.333% - 10px);
+  margin: 5px;
+}
+
+.upload-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+}
+
+.upload-button[data-uploaded="true"] {
+  background-color: #28a745;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}
+
+.upload-button[data-uploaded="true"]:hover {
+  background-color: #218838;
+}
+
+.form-group textarea {
+  height: 100px;
+}
+
+.form-group button, .copy-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.form-group button:hover, .copy-btn:hover {
+  background-color: #218838;
+}
+
+.form-group a {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.form-group a:hover {
+  text-decoration: underline;
+}
+
+.copy-btn {
+  background-color: #007bff;
+}
+
+.copy-btn:hover {
+  background-color: #0056b3;
+}
+
+#signaturePreview {
+  margin-top: 20px;
+}
+
+textarea#generatedCode {
+  height: 100px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Modal */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.whatsapp-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.whatsapp-button:hover {
+  background-color: #1da851;
+}
