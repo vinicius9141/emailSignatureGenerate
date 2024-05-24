@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gerador de Assinatura de Email</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="signature-styles.css">
@@ -13,7 +12,7 @@
 <header class="header">
     <div class="container">
         <div class="logo">
-            <img src="https://i.postimg.cc/R07MmZKS/DALL-E-2024-05-24-13-25-15-A-simple-clean-logo-with-the-text-Signature-Generator-in-modern-san.webp" alt="Logo">
+            <img src="https://i.postimg.cc/MKcZTJjB/DALL-E-2024-05-24-13-25-15-A-simple-clean-logo-with-the-text-Signature-Generator-in-modern-san.webp" alt="Logo">
         </div>
         <nav class="nav">
             <ul>
@@ -38,33 +37,33 @@
         <div class="upload-group">
             <div class="form-group">
                 <label for="profilePicture">Foto de Perfil</label>
-                <input type="file" id="profilePicture" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
-                <label for="profilePicture" class="upload-button">Upload Foto de Perfil</label>
+                <input type="file" id="profilePicture" class="upload-input" accept="image/*" onchange="handleFileUpload(event, 'profilePicture')">
+                <label for="profilePicture" class="upload-button" id="profilePictureButton">Upload Foto de Perfil</label>
             </div>
             <div class="form-group">
                 <label for="logo">Logo</label>
-                <input type="file" id="logo" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
-                <label for="logo" class="upload-button">Upload Logo</label>
+                <input type="file" id="logo" class="upload-input" accept="image/*" onchange="handleFileUpload(event, 'logo')">
+                <label for="logo" class="upload-button" id="logoButton">Upload Logo</label>
             </div>
             <div class="form-group">
                 <label for="certificate1">Selo 1</label>
-                <input type="file" id="certificate1" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
-                <label for="certificate1" class="upload-button">Upload Selo 1</label>
+                <input type="file" id="certificate1" class="upload-input" accept="image/*" onchange="handleFileUpload(event, 'certificate1')">
+                <label for="certificate1" class="upload-button" id="certificate1Button">Upload Selo 1</label>
             </div>
             <div class="form-group">
                 <label for="certificate2">Selo 2</label>
-                <input type="file" id="certificate2" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
-                <label for="certificate2" class="upload-button">Upload Selo 2</label>
+                <input type="file" id="certificate2" class="upload-input" accept="image/*" onchange="handleFileUpload(event, 'certificate2')">
+                <label for="certificate2" class="upload-button" id="certificate2Button">Upload Selo 2</label>
             </div>
             <div class="form-group">
                 <label for="certificate3">Selo 3</label>
-                <input type="file" id="certificate3" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
-                <label for="certificate3" class="upload-button">Upload Selo 3</label>
+                <input type="file" id="certificate3" class="upload-input" accept="image/*" onchange="handleFileUpload(event, 'certificate3')">
+                <label for="certificate3" class="upload-button" id="certificate3Button">Upload Selo 3</label>
             </div>
             <div class="form-group">
                 <label for="certificate4">Selo 4</label>
-                <input type="file" id="certificate4" class="upload-input" accept="image/*" onchange="handleFileUpload(event)">
-                <label for="certificate4" class="upload-button">Upload Selo 4</label>
+                <input type="file" id="certificate4" class="upload-input" accept="image/*" onchange="handleFileUpload(event, 'certificate4')">
+                <label for="certificate4" class="upload-button" id="certificate4Button">Upload Selo 4</label>
             </div>
         </div>
         <div class="form-group">
@@ -101,14 +100,14 @@
 
 <!-- Modal -->
 <div id="paymentModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Você precisa pagar para acessar esta funcionalidade.</p>
-      <p>Entre em contato:</p>
-      <a href="https://api.whatsapp.com/send?phone=55129921003377&text=Olá!%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-button">Fale conosco no WhatsApp</a>
-    </div>
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Você precisa pagar para acessar esta funcionalidade.</p>
+    <p>Entre em contato:</p>
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button">Fale conosco no WhatsApp</a>
   </div>
-  
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
