@@ -2,29 +2,54 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro - Gerador de Assinatura de Email</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="register-styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="https://i.postimg.cc/R07MmZKS/DALL-E-2024-05-24-13-25-15-A-simple-clean-logo-with-the-text-Signature-Generator-in-modern-san.webp" alt="Logo">
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="register.html">Cadastro</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 <div class="container">
-    <h1>Cadastro</h1>
-    <div id="registerContainer">
-        <div class="form-group">
-            <label for="registerEmail">Email</label>
-            <input type="email" id="registerEmail">
-        </div>
-        <div class="form-group">
-            <label for="registerPassword">Senha</label>
-            <input type="password" id="registerPassword">
-        </div>
-        <div class="form-group">
-            <button onclick="register()">Cadastrar</button>
-        </div>
+    <div class="register-box">
+        <h2>Crie sua conta</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" placeholder="Digite seu email" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Senha</label>
+                <input type="password" id="registerPassword" placeholder="Digite sua senha" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirme sua Senha</label>
+                <input type="password" id="confirmPassword" placeholder="Confirme sua senha" required>
+            </div>
+            <button type="button" class="btn-primary" onclick="register()">Cadastrar</button>
+            <p class="login-link">Já tem uma conta? <a href="login.html">Faça login</a></p>
+        </form>
     </div>
 </div>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="firebase-config.js"></script>
 <script src="main.js"></script>
 </body>

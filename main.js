@@ -1,35 +1,66 @@
 async function login() {
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
 
-  try {
-      const userCredential = await auth.signInWithEmailAndPassword(email, password);
-      const user = userCredential.user;
-      window.location.href = 'signature.html';
-  } catch (error) {
-      alert('Erro ao fazer login: ' + error.message);
-  }
+    try {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        toastr.success('Login realizado com sucesso.');
+        setTimeout(() => {
+            window.location.href = 'signature.html';
+        }, 2000);
+    } catch (error) {
+        toastr.error('Erro ao fazer login: ' + error.message);
+    }
+}
+// Configuração do Toastr
+toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": true,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
 }
 
 async function register() {
-  const email = document.getElementById('registerEmail').value;
-  const password = document.getElementById('registerPassword').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
 
-  try {
-      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-      const user = userCredential.user;
+    if (password !== confirmPassword) {
+        toastr.error('As senhas não coincidem. Por favor, verifique.');
+        return;
+    }
 
-      await db.collection('users').doc(user.uid).set({
-          email: user.email,
-          isPaid: false  // Set this to true after the user has paid
-      });
+    try {
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
 
-      alert('Cadastro realizado com sucesso. Faça login para continuar.');
-      window.location.href = 'login.html';
-  } catch (error) {
-      alert('Erro ao cadastrar: ' + error.message);
-  }
+        await db.collection('users').doc(user.uid).set({
+            email: user.email,
+            isPaid: false  // Set this to true after the user has paid
+        });
+
+        toastr.success('Cadastro realizado com sucesso. Faça login para continuar.');
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+    } catch (error) {
+        toastr.error('Erro ao cadastrar: ' + error.message);
+    }
 }
+
+
 
 function readFileAsDataURL(file) {
   return new Promise((resolve, reject) => {
